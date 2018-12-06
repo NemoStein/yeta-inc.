@@ -2,10 +2,11 @@ const del = require('del')
 const gulp = require('gulp')
 const path = require('path')
 const less = require('gulp-less')
+const livereload = require('gulp-livereload')
 const sourcemaps = require('gulp-sourcemaps')
 const webpack = require('webpack-stream')
 
-const output = path.resolve(__dirname, 'www')
+let output = path.resolve(__dirname, 'www')
 
 const clean = async () =>
 {
@@ -16,6 +17,7 @@ const content = async () =>
 {
 	return gulp.src('src/content/**/*', { since: gulp.lastRun(content) })
 		.pipe(gulp.dest(output))
+		.pipe(livereload())
 }
 
 const styles = async () =>
@@ -28,6 +30,7 @@ const styles = async () =>
 		}))
 		.pipe(sourcemaps.write())
 		.pipe(gulp.dest(output))
+		.pipe(livereload())
 }
 
 const scripts = async () =>
@@ -43,10 +46,16 @@ const scripts = async () =>
 			context: output
 		}))
 		.pipe(gulp.dest(output))
+		.pipe(livereload())
 }
 
 const watch = async () =>
 {
+	/** @todo Remove this hack and find a better way to sync folders & live-reload it */
+	output = path.join(__dirname, 'platforms/browser/www')
+	
+	livereload.listen()
+	
 	gulp.watch('src/content/**/*', content)
 	gulp.watch('src/less/**/*', styles)
 	gulp.watch('src/js/**/*', scripts)
