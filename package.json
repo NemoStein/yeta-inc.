@@ -5,8 +5,7 @@
     "description": "A sample Apache Cordova application that responds to the deviceready event.",
     "main": "index.js",
     "scripts": {
-		"postinstall": "cordova prepare",
-		"start": "gulp | cordova run browser",
+        "postinstall": "cordova prepare",
         "test": "echo \"Error: no test specified\" && exit 1"
     },
     "author": "NemoStein <contato@nemostein.com.br> (http://nemostein.com.br)",
