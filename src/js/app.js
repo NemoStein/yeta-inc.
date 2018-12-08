@@ -1,9 +1,7 @@
-import YetaInc from './YetaInc.js'
+import YetaInc from './yetainc/YetaInc.js'
 
 document.addEventListener('DOMContentLoaded', () =>
 {
-	/** @type {YetaInc} */
-	// @ts-ignore
-	const game = YetaInc.from(document.getElementById('App'))
+	const game = /** @type {YetaInc} */ (YetaInc.from(document.getElementById('App')))
 	game.start()
 })

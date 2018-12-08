@@ -1,19 +1,31 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta http-equiv="Content-Security-Policy" content="default-src * data: gap: https://ssl.gstatic.com 'unsafe-eval'; style-src 'self' 'unsafe-inline'; media-src *; img-src 'self' data: content:;">
-        <meta name="format-detection" content="telephone=no">
-        <meta name="msapplication-tap-highlight" content="no">
-        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
 
-		<title>YetA Inc.</title>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="Content-Security-Policy" content="default-src * data: gap: https://ssl.gstatic.com 'unsafe-eval'; style-src 'self' 'unsafe-inline'; media-src *; img-src 'self' data: content:;">
+	<meta name="format-detection" content="telephone=no">
+	<meta name="msapplication-tap-highlight" content="no">
+	<meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
 
-		<link rel="stylesheet" type="text/css" href="app.css">
-		
-		<script src="cordova.js" defer></script>
-		<script src="app.js" defer></script>
-    </head>
-    <body>
-		<div id="App"></div>
-    </body>
+	<title>YetA Inc.</title>
+
+	<link rel="stylesheet" type="text/css" href="app.css">
+
+	<script src="cordova.js" defer></script>
+	<script src="app.js" defer></script>
+</head>
+
+<body>
+	<div id="App"></div>
+
+	<template class="component bar">
+		<div class="fill"></div>
+	</template>
+	
+	<template class="component button">
+		<span class="label"></span>
+	</template>
+</body>
+
 </html>

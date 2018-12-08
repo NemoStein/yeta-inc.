@@ -1,7 +1,7 @@
 export default class Display extends HTMLElement
 {
 	/**
-	 * Enrich HTML Element into this type
+	 * Enrich a HTML Element into this type
 	 * @param {HTMLElement} element 
 	 * @returns {Display}
 	 */
