@@ -7,6 +7,15 @@ export default class Display extends HTMLElement
 	 */
 	static from(element)
 	{
-		return Object.setPrototypeOf(element, this.prototype)
+		/** @type {Display} */
+		const display = Object.setPrototypeOf(element, this.prototype)
+		display.initialize()
+
+		return display
 	}
+
+	/**
+	 * Initializes this object after beign enriched
+	 */
+	initialize() {}
 }
