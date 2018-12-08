@@ -1,4 +1,4 @@
-export default class Utils
+export default class DOM
 {
 	/**
 	 * @param {String} key The key of the template
