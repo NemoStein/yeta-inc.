@@ -7,12 +7,13 @@ export default class DOM
 	 */
 	static getTemplate(key, parent)
 	{
+		/** @type {HTMLTemplateElement} */
 		const template = (parent || document).querySelector(`template.${key}`)
-		const div = document.createElement('div')
+		const container = document.createElement('div')
 		
-		div.append(document.importNode(template, true))
-		div.classList.add(...key.split('.').map(value => value))
+		container.append(document.importNode(template.content, true))
+		container.classList.add(...key.split('.').map(value => value))
 		
-		return div
+		return container
 	}
 }
