@@ -15,7 +15,7 @@ export default class Display extends HTMLElement
 	}
 
 	/**
-	 * Initializes this object after beign enriched
+	 * Initializes this object after it has been enriched.
 	 */
 	initialize() {}
 }
