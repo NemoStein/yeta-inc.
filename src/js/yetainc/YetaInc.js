@@ -5,8 +5,15 @@ export default class YetaInc extends Display
 {
 	start()
 	{
-		const button = Button.create('Hello world')
+		this.append(Button.create('Hello world', button =>
+		{
+			button.label = 'Bye world'
+		})
+		.disable())
 		
-		this.append(button)
+		this.append(Button.create('Hello world', button =>
+		{
+			button.label = 'Bye world'
+		}))
 	}
 }
