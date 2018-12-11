@@ -6,4 +6,24 @@
 	padding: 0.75rem;
 	margin: 0.5rem 0;
 	border: 1px solid grey;
+	background-color: rgba(255, 255, 255, 0.1);
+	transition: all 0.25s ease-out;
+	
+	&:active
+	{
+		background-color: rgba(255, 255, 255, 0.2);
+		transition: all 0.125s ease-out;
+	}
+	
+	&.disabled
+	{
+		color: gray;
+		background-color: rgba(128, 128, 128, 0.1);
+		
+		&:active
+		{
+			border-color:  rgba(200, 55, 55, 0.4);
+			background-color: rgba(200, 55, 55, 0.2);
+		}
+	}
 }
