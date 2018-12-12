@@ -1,15 +1,15 @@
 {
     "name": "sourbit.games.yetainc",
-    "displayName": "HelloCordova",
-    "version": "1.0.0",
-    "description": "A sample Apache Cordova application that responds to the deviceready event.",
+    "displayName": "YetA Inc.",
+    "version": "0.3.0",
+    "description": "Yet Another Incremental Game",
     "main": "index.js",
     "scripts": {
         "postinstall": "cordova prepare",
-        "test": "echo \"Error: no test specified\" && exit 1"
+        "test": "nyc --all mocha"
     },
     "author": "NemoStein <contato@nemostein.com.br> (http://nemostein.com.br)",
-    "license": "Apache-2.0",
+    "license": "UNLICENSED",
     "dependencies": {
         "cordova-browser": "^5.0.4",
         "cordova-plugin-whitelist": "^1.3.3",
@@ -27,5 +27,12 @@
         "platforms": [
             "browser"
         ]
+    },
+    "devDependencies": {
+        "mocha": "^5.2.0",
+        "mockery": "^2.1.0",
+        "nyc": "^13.1.0",
+        "should": "^13.2.3",
+        "sinon": "^7.2.2"
     }
 }
