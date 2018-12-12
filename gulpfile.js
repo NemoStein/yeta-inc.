@@ -4,7 +4,6 @@ const path = require('path')
 const less = require('gulp-less')
 const livereload = require('gulp-livereload')
 const plumber = require('gulp-plumber')
-const uglify = require('gulp-uglify')
 
 let output = path.resolve(__dirname, 'www')
 const sourcemaps = true
@@ -38,7 +37,6 @@ const scripts = async () =>
 {
 	return gulp.src('src/js/**/*.js', { sourcemaps, since: gulp.lastRun(scripts) })
 		.pipe(plumber())
-		.pipe(uglify())
 		.pipe(gulp.dest(output, { sourcemaps: '.' }))
 		.pipe(livereload())
 }
