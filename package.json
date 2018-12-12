@@ -6,7 +6,7 @@
     "main": "index.js",
     "scripts": {
         "postinstall": "cordova prepare",
-        "test": "nyc mocha"
+        "test": "nyc mocha --recursive"
     },
     "author": "NemoStein <contato@nemostein.com.br> (http://nemostein.com.br)",
     "license": "UNLICENSED",
