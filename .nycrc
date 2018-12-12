@@ -1,7 +1,4 @@
 {
-	"check-coverage": true,
-	"per-file": true,
-	"lines": 95,
 	"include": [
 		"src/js/**/*.js"
 	],
