@@ -1,5 +1,5 @@
 import Display from '../Display.js'
-import DOM from '../DOM.js'
+import Utils from '../Utils.js'
 
 /**
  * @callback OnButtonClick
@@ -15,7 +15,7 @@ export default class Button extends Display
 	 */
 	static create(label, action)
 	{
-		const button = /** @type {Button} */ (this.from(DOM.getTemplate('component.button')))
+		const button = /** @type {Button} */ (this.from(Utils.getTemplate('component.button')))
 
 		button.action = action
 		button.label = label

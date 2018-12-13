@@ -1,13 +1,14 @@
+import DOM from './DOM.js'
 import YetaInc from './yetainc/YetaInc.js'
 
-document.addEventListener('contextmenu', event =>
+DOM.addEventListener('contextmenu', event =>
 {
 	event.stopImmediatePropagation()
 	event.preventDefault()
 })
 
-document.addEventListener('DOMContentLoaded', () =>
+DOM.addEventListener('DOMContentLoaded', () =>
 {
-	const game = /** @type {YetaInc} */ (YetaInc.from(document.getElementById('App')))
+	const game = /** @type {YetaInc} */ (YetaInc.from(DOM.getElementById('App')))
 	game.start()
 })
