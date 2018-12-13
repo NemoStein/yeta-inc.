@@ -6,7 +6,7 @@
     "main": "index.js",
     "scripts": {
         "postinstall": "cordova prepare",
-        "test": "nyc mocha --recursive"
+        "test": "nyc mocha --recursive -r esm"
     },
     "author": "NemoStein <contato@nemostein.com.br> (http://nemostein.com.br)",
     "license": "UNLICENSED",
@@ -24,6 +24,7 @@
     },
     "devDependencies": {
         "del": "^3.0.0",
+        "esm": "^3.0.84",
         "gulp": "^4.0.0",
         "gulp-less": "^4.0.1",
         "gulp-livereload": "^4.0.1",
@@ -32,6 +33,7 @@
         "mockery": "^2.1.0",
         "nyc": "^13.1.0",
         "should": "^13.2.3",
+        "should-sinon": "0.0.6",
         "sinon": "^7.2.2"
     }
 }
