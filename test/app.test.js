@@ -1,7 +1,6 @@
 const mockery = require('mockery')
 const sinon = require('sinon')
 
-require('should')
 require('should-sinon')
 
 describe('app.js', () =>
@@ -33,6 +32,12 @@ describe('app.js', () =>
 	{
 		sandbox.restore()
 		mockery.resetCache()
+	})
+	
+	after(() =>
+	{
+		mockery.deregisterAll()
+		mockery.disable()
 	})
 
 	it('should disable document contextmenu', () =>

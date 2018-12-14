@@ -1,1 +1,3 @@
-export default window.document
+const document = window.document
+
+export default document
