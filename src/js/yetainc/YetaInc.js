@@ -5,6 +5,11 @@ export default class YetaInc extends Display
 {
 	start()
 	{
+		this.samples()
+	}
+	
+	samples()
+	{
 		this.append(Button.create('Hello world', button =>
 		{
 			button.label = 'Bye world'
