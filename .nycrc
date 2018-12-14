@@ -8,5 +8,6 @@
 		"text-summary"
 	],
 	"cache": true,
-	"all": true
+	"all": true,
+	"eager": true
 }
