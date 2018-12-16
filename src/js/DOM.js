@@ -1,3 +1,4 @@
 const document = window.document
+const element = HTMLElement
 
-export default document
+export { document, element as HTMLElement }

@@ -1,3 +1,5 @@
+import { HTMLElement } from '../DOM.js'
+
 export default class Display extends HTMLElement
 {
 	/**
