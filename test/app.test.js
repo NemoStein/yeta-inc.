@@ -10,8 +10,12 @@ describe('app.js', () =>
 	const fakeElement = 'fake-element'
 
 	const DOM = {
-		addEventListener: sandbox.spy(),
-		getElementById: sandbox.stub().returns(fakeElement),
+		document:
+		{
+			addEventListener: sandbox.spy(),
+			getElementById: sandbox.stub().returns(fakeElement),
+		},
+		HTMLElement: {}
 	}
 
 	const YetaInc = class
@@ -33,7 +37,7 @@ describe('app.js', () =>
 		sandbox.restore()
 		mockery.resetCache()
 	})
-	
+
 	after(() =>
 	{
 		mockery.deregisterAll()
@@ -49,8 +53,8 @@ describe('app.js', () =>
 
 		require('../src/js/app.js')
 
-		DOM.addEventListener.should.be.calledWithExactly('contextmenu', sinon.match.func)
-		DOM.addEventListener.withArgs('contextmenu').args[0][1](event)
+		DOM.document.addEventListener.should.be.calledWithExactly('contextmenu', sinon.match.func)
+		DOM.document.addEventListener.withArgs('contextmenu').args[0][1](event)
 
 		event.preventDefault.should.be.calledOnce()
 		event.stopImmediatePropagation.should.be.calledOnce()
@@ -64,10 +68,10 @@ describe('app.js', () =>
 
 		require('../src/js/app.js')
 
-		DOM.addEventListener.should.be.calledWithExactly('DOMContentLoaded', sinon.match.func)
-		DOM.addEventListener.withArgs('DOMContentLoaded').args[0][1]()
-		DOM.getElementById.should.be.calledOnce()
-		DOM.getElementById.should.be.calledWith('App')
+		DOM.document.addEventListener.should.be.calledWithExactly('DOMContentLoaded', sinon.match.func)
+		DOM.document.addEventListener.withArgs('DOMContentLoaded').args[0][1]()
+		DOM.document.getElementById.should.be.calledOnce()
+		DOM.document.getElementById.should.be.calledWith('App')
 
 		YetaIncFromStub.should.be.calledOnce()
 		YetaIncFromStub.should.be.calledWithExactly(fakeElement)
