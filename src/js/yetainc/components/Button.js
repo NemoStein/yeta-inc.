@@ -13,7 +13,7 @@ export default class Button extends Display
 	 * @param {OnButtonClick} action
 	 * @returns {Button}
 	 */
-	static create(label, action)
+	static create(label = '', action = null)
 	{
 		const button = /** @type {Button} */ (this.from(Utils.getTemplate('component.button')))
 
@@ -25,8 +25,9 @@ export default class Button extends Display
 
 	initialize()
 	{
-		this.enabled = true
 		this.labelElement = this.querySelector('.label')
+		
+		this.enable()
 		this.addEventListener('click', () =>
 		{
 			if (this.enabled && this.onButtonClick)
@@ -37,16 +38,24 @@ export default class Button extends Display
 	}
 
 	/**
-	 * @param {OnButtonClick} value
+	 * @returns {OnButtonClick}
 	 */
+	get action()
+	{
+		return this.onButtonClick
+	}
 	set action(value)
 	{
 		this.onButtonClick = value
 	}
 
 	/**
-	 * @param {String} value
+	 * @returns {String}
 	 */
+	get label()
+	{
+		return this.labelElement.textContent
+	}
 	set label(value)
 	{
 		this.labelElement.textContent = value
@@ -56,7 +65,7 @@ export default class Button extends Display
 	{
 		this.enabled = true
 		this.classList.remove('disabled')
-		
+
 		return this
 	}
 
@@ -64,7 +73,7 @@ export default class Button extends Display
 	{
 		this.enabled = false
 		this.classList.add('disabled')
-		
+
 		return this
 	}
 }
