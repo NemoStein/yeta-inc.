@@ -11,7 +11,7 @@ export default class Display extends HTMLElement
 	{
 		if (!(element instanceof HTMLElement))
 		{
-			throw new Error('Param "element" must be a HTMLElement')
+			throw new Error('Param "element" must be of type HTMLElement')
 		}
 		
 		/** @type {Display} */
