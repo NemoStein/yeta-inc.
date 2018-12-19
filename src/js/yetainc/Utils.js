@@ -9,6 +9,16 @@ export default class Utils
 	 */
 	static getTemplate(key, parent = document)
 	{
+		if (!key || typeof key !== 'string')
+		{
+			throw new Error('Parameter "key" must be a non-empty String')
+		}
+		
+		if (!parent || !parent.querySelector)
+		{
+			throw new Error('Parameter "parent" must be of type "Element", "Document" or "DocumentFragment"')
+		}
+		
 		/** @type {HTMLTemplateElement} */
 		const template = parent.querySelector(`template.${key}`)
 		const container = document.createElement('div')
