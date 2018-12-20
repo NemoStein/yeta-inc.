@@ -18,7 +18,7 @@ describe('YetaInc', () =>
 
 	afterEach(() =>
 	{
-		sandbox.restore()
+		sandbox.resetHistory()
 	})
 
 	after(() =>

@@ -18,7 +18,7 @@ describe('Components.Bar', () =>
 
 	afterEach(() =>
 	{
-		sandbox.restore()
+		sandbox.resetHistory()
 	})
 
 	after(() =>

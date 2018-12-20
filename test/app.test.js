@@ -34,7 +34,7 @@ describe('app.js', () =>
 
 	afterEach(() =>
 	{
-		sandbox.restore()
+		sandbox.resetHistory()
 		mockery.resetCache()
 	})
 

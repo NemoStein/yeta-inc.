@@ -36,7 +36,7 @@ describe('Utils', () =>
 
 	afterEach(() =>
 	{
-		sandbox.restore()
+		sandbox.resetHistory()
 	})
 
 	after(() =>

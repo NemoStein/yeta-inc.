@@ -24,7 +24,7 @@ describe('Display', () =>
 
 	afterEach(() =>
 	{
-		sandbox.restore()
+		sandbox.resetHistory()
 	})
 
 	after(() =>

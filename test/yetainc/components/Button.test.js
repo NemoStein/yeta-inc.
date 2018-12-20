@@ -62,7 +62,7 @@ describe('Components.Button', () =>
 
 	afterEach(() =>
 	{
-		sandbox.restore()
+		sandbox.resetHistory()
 	})
 
 	after(() =>
@@ -78,6 +78,16 @@ describe('Components.Button', () =>
 		button.dispatchEvent('click')
 
 		defaultCallback.should.be.calledOnce()
+	})
+
+	it('should not react to click events if button is disabled', () =>
+	{
+		const button = Button.create(defaultLabel, defaultCallback)
+		
+		button.disable()
+		button.dispatchEvent('click')
+		
+		defaultCallback.should.not.be.called()
 	})
 
 	describe('Button.create()', () =>
