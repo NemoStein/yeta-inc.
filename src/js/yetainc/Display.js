@@ -1,6 +1,6 @@
-import { HTMLElement } from '../DOM.js'
+import { HTMLElement as DOMElement } from '../DOM.js'
 
-export default class Display extends HTMLElement
+export default class Display extends DOMElement
 {
 	/**
 	 * Enrich a HTML Element into this type
@@ -9,7 +9,7 @@ export default class Display extends HTMLElement
 	 */
 	static from(element)
 	{
-		if (!(element instanceof HTMLElement))
+		if (!(element instanceof DOMElement))
 		{
 			throw new Error('Param "element" must be of type HTMLElement')
 		}
