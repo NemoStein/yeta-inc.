@@ -13,14 +13,13 @@ describe('app.js', () =>
 		document:
 		{
 			addEventListener: sandbox.spy(),
-			getElementById: sandbox.stub().returns(fakeElement),
 		},
 		HTMLElement: {}
 	}
 
 	const YetaInc = class
 	{
-		static from() { return null }
+		static create() { return null }
 		start() {}
 	}
 
@@ -63,18 +62,15 @@ describe('app.js', () =>
 	it('should wait for DOMContentLoaded and create a YetaInc instance and start it', () =>
 	{
 		const yetainc = new YetaInc()
-		const YetaIncFromStub = sandbox.stub(YetaInc, 'from').returns(yetainc)
+		const YetaIncCreateStub = sandbox.stub(YetaInc, 'create').returns(yetainc)
 		const yetaincStartStub = sandbox.stub(yetainc, 'start')
 
 		require('../src/js/app.js')
 
 		DOM.document.addEventListener.should.be.calledWithExactly('DOMContentLoaded', sinon.match.func)
 		DOM.document.addEventListener.withArgs('DOMContentLoaded').args[0][1]()
-		DOM.document.getElementById.should.be.calledOnce()
-		DOM.document.getElementById.should.be.calledWith('App')
 
-		YetaIncFromStub.should.be.calledOnce()
-		YetaIncFromStub.should.be.calledWithExactly(fakeElement)
+		YetaIncCreateStub.should.be.calledOnce()
 		yetaincStartStub.should.be.calledOnce()
 	})
 })

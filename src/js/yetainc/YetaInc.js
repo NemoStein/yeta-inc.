@@ -1,8 +1,14 @@
+import { document } from '../DOM.js'
 import Display from './Display.js'
 import Button from './components/Button.js'
 
 export default class YetaInc extends Display
 {
+	static create()
+	{
+		return /** @type {YetaInc} */ (this.from(document.getElementById('App')))
+	}
+
 	start()
 	{
 		this.samples()

@@ -9,6 +9,6 @@ document.addEventListener('contextmenu', event =>
 
 document.addEventListener('DOMContentLoaded', () =>
 {
-	const game = /** @type {YetaInc} */ (YetaInc.from(document.getElementById('App')))
+	const game = YetaInc.create()
 	game.start()
 })
