@@ -8,10 +8,15 @@ export default class YetaInc extends Display
 	{
 		return /** @type {YetaInc} */ (this.from(Utils.getElement('#App')))
 	}
+	
+	initialize()
+	{
+		this.samples()
+	}
 
 	start()
 	{
-		this.samples()
+		
 	}
 	
 	samples()

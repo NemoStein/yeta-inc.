@@ -7,11 +7,7 @@ describe('YetaInc', () =>
 {
 	let YetaInc
 	const sandbox = sinon.createSandbox()
-	
-	const DOM = {
-		document: {}
-	}
-	
+
 	const Display = class Display
 	{
 		static from()
@@ -21,14 +17,30 @@ describe('YetaInc', () =>
 
 			return display
 		}
+
+		append() {}
 	}
-	
+
+	const Buton = {
+		create()
+		{
+			return {
+				disable: () => {}
+			}
+		}
+	}
+
+	const Utils = {
+		getElement: () => {}
+	}
+
 	before(() =>
 	{
 		mockery.enable({ useCleanCache: true })
 		mockery.registerAllowable('../../src/js/yetainc/YetaInc.js')
-		mockery.registerMock('../DOM.js', DOM)
 		mockery.registerMock('./Display.js', Display)
+		mockery.registerMock('./components/Button.js', Buton)
+		mockery.registerMock('./Utils.js', Utils)
 
 		YetaInc = require('../../src/js/yetainc/YetaInc.js').default
 	})
@@ -42,5 +54,14 @@ describe('YetaInc', () =>
 	{
 		mockery.deregisterAll()
 		mockery.disable()
+	})
+
+	describe('YetaInc.create()', () =>
+	{
+		it('should return a YetaInc', () =>
+		{
+			YetaInc.create().should.be.instanceof(Display)
+			YetaInc.create().should.be.instanceof(YetaInc)
+		})
 	})
 })
