@@ -19,7 +19,7 @@ describe('Utils', () =>
 	const DOM = {
 		document:
 		{
-			querySelector: () => fakeElement,
+			querySelector: () => {},
 			createElement: () => fakeElement,
 			importNode: () => {},
 		}
@@ -32,6 +32,12 @@ describe('Utils', () =>
 		mockery.registerMock('../DOM.js', DOM)
 
 		Utils = require('../../src/js/yetainc/Utils.js').default
+		
+		const stub = sandbox.stub(DOM.document, 'querySelector')
+		stub.withArgs('template.hello').returns(fakeElement)
+		stub.withArgs('template.hello.world').returns(fakeElement)
+		stub.withArgs('.hello').returns(fakeElement)
+		stub.withArgs('.hello.world').returns(fakeElement)
 	})
 
 	afterEach(() =>
@@ -45,7 +51,7 @@ describe('Utils', () =>
 		mockery.disable()
 	})
 
-	describe('Display.from()', () =>
+	describe('Utils.getTemplate()', () =>
 	{
 		it('should throw if parameter "key" is a non-empty String', () =>
 		{
@@ -70,6 +76,44 @@ describe('Utils', () =>
 			should(() => Utils.getTemplate('hello', () => {})).throw()
 
 			should(() => Utils.getTemplate('hello', DOM.document)).not.throw()
+		})
+
+		it('should throw if template doesn\'t exist', () =>
+		{
+			should(() => Utils.getTemplate('wrong')).throw()
+		})
+	})
+
+	describe('Utils.getElement()', () =>
+	{
+		it('should throw if parameter "selector" is a non-empty String', () =>
+		{
+			should(() => Utils.getElement()).throw()
+			should(() => Utils.getElement(null)).throw()
+			should(() => Utils.getElement(undefined)).throw()
+			should(() => Utils.getElement('')).throw()
+			should(() => Utils.getElement(false)).throw()
+			should(() => Utils.getElement(0)).throw()
+
+			should(() => Utils.getElement('.hello')).not.throw()
+			should(() => Utils.getElement('.hello.world')).not.throw()
+		})
+
+		it('should throw if optional parameter "parent" is not a ParentNode', () =>
+		{
+			should(() => Utils.getElement('.hello', null)).throw()
+			should(() => Utils.getElement('.hello', '')).throw()
+			should(() => Utils.getElement('.hello', false)).throw()
+			should(() => Utils.getElement('.hello', 0)).throw()
+			should(() => Utils.getElement('.hello', {})).throw()
+			should(() => Utils.getElement('.hello', () => {})).throw()
+
+			should(() => Utils.getElement('.hello', DOM.document)).not.throw()
+		})
+
+		it('should throw if parameter "selector" doesn\'t return a Element', () =>
+		{
+			should(() => Utils.getElement('.wrong')).throw()
 		})
 	})
 })
