@@ -31,6 +31,8 @@ export default class YetaInc extends GameObject
 		if (this.elapsed > this.tickTime)
 		{
 			this.early = now
+			
+			super.update()
 		}
 	}
 	

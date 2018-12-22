@@ -59,5 +59,11 @@ export default class GameObject extends DOMElement
 	/**
 	 * Updates this object on each gameloop
 	 */
-	update() {}
+	update()
+	{
+		for (const object of this.objects)
+		{
+			object.update()
+		}
+	}
 }
