@@ -23,13 +23,15 @@ export default class YetaInc extends GameObject
 	
 	samples()
 	{
-		this.append(Button.create('Hello world', button =>
+		const button = Button.create('Hello world', button =>
 		{
 			button.label = 'Bye world'
 		})
-		.disable())
+		.disable()
 		
-		this.append(Button.create('Hello world', button =>
+		this.attach(button)
+		
+		this.attach(Button.create('Hello world', button =>
 		{
 			button.label = 'Bye world'
 		}))
