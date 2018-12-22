@@ -1,19 +1,21 @@
+/** @type {Document} */
 let document
-let element
-let rAF
-
 try
 {
 	document = window.document
 }
 catch { /* Silently discarding error */ }
 
+/** @type {typeof HTMLElement} */
+let element
 try
 {
 	element = HTMLElement
 }
 catch { /* Silently discarding error */ }
 
+/** @type {Function} */
+let rAF
 try
 {
 	rAF = requestAnimationFrame
