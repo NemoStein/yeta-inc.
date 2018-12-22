@@ -18,7 +18,20 @@ export default class YetaInc extends GameObject
 
 	start()
 	{
+		this.early = performance.now()
+		this.elapsed = 0
+		this.tickTime = 1000 / 10
+	}
+	
+	update()
+	{
+		const now = performance.now()
+		this.elapsed = now - this.early
 		
+		if (this.elapsed > this.tickTime)
+		{
+			this.early = now
+		}
 	}
 	
 	samples()
