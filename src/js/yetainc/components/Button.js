@@ -25,6 +25,8 @@ export default class Button extends GameObject
 
 	initialize()
 	{
+		super.initialize()
+		
 		this.labelElement = this.querySelector('.label')
 		
 		this.enable()
