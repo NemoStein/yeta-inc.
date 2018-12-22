@@ -1,5 +1,6 @@
 let document
 let element
+let rAF
 
 try
 {
@@ -13,4 +14,15 @@ try
 }
 catch { /* Silently discarding error */ }
 
-export { document, element as HTMLElement }
+try
+{
+	rAF = requestAnimationFrame
+}
+catch { /* Silently discarding error */ }
+
+export
+{
+	document,
+	element as HTMLElement,
+	rAF as requestAnimationFrame
+}

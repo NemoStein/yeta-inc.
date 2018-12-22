@@ -14,13 +14,15 @@ describe('app.js', () =>
 		{
 			addEventListener: sandbox.spy(),
 		},
-		HTMLElement: {}
+		HTMLElement: {},
+		requestAnimationFrame: () => {},
 	}
 
 	const YetaInc = class
 	{
 		static create() { return null }
 		start() {}
+		update() {}
 	}
 
 	before(() =>

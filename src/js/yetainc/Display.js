@@ -25,4 +25,9 @@ export default class Display extends DOMElement
 	 * Initializes this object after it has been enriched.
 	 */
 	initialize() {}
+	
+	/**
+	 * Updates this object on each gameloop
+	 */
+	update() {}
 }
