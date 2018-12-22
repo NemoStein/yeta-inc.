@@ -1,8 +1,8 @@
-import Display from './Display.js'
+import GameObject from './GameObject.js'
 import Button from './components/Button.js'
 import Utils from './Utils.js';
 
-export default class YetaInc extends Display
+export default class YetaInc extends GameObject
 {
 	static create()
 	{
@@ -11,6 +11,8 @@ export default class YetaInc extends Display
 	
 	initialize()
 	{
+		super.initialize()
+		
 		this.samples()
 	}
 

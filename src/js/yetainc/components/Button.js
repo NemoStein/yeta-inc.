@@ -1,4 +1,4 @@
-import Display from '../Display.js'
+import GameObject from '../GameObject.js'
 import Utils from '../Utils.js'
 
 /**
@@ -6,7 +6,7 @@ import Utils from '../Utils.js'
  * @param {Button} button The clicked button
  */
 
-export default class Button extends Display
+export default class Button extends GameObject
 {
 	/**
 	 * @param {String} label

@@ -7,7 +7,7 @@ describe('Components.Button', () =>
 	let Button
 	const sandbox = sinon.createSandbox()
 
-	const Display = class Display
+	const GameObject = class GameObject
 	{
 		addEventListener(type, listener)
 		{
@@ -36,10 +36,10 @@ describe('Components.Button', () =>
 
 		static from()
 		{
-			const display = Object.setPrototypeOf(new Display(), Button.prototype)
-			display.initialize()
+			const object = Object.setPrototypeOf(new GameObject(), Button.prototype)
+			object.initialize()
 
-			return display
+			return object
 		}
 	}
 
@@ -54,7 +54,7 @@ describe('Components.Button', () =>
 	{
 		mockery.enable({ useCleanCache: true })
 		mockery.registerAllowable('../../../src/js/yetainc/components/Button.js')
-		mockery.registerMock('../Display.js', Display)
+		mockery.registerMock('../GameObject.js', GameObject)
 		mockery.registerMock('../Utils.js', Utils)
 
 		Button = require('../../../src/js/yetainc/components/Button.js').default
@@ -94,7 +94,7 @@ describe('Components.Button', () =>
 	{
 		it('should return a Button', () =>
 		{
-			Button.create().should.be.instanceof(Display)
+			Button.create().should.be.instanceof(GameObject)
 			Button.create().should.be.instanceof(Button)
 		})
 

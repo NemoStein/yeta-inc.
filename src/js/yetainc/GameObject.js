@@ -1,11 +1,11 @@
 import { HTMLElement as DOMElement } from '../DOM.js'
 
-export default class Display extends DOMElement
+export default class GameObject extends DOMElement
 {
 	/**
 	 * Enrich a HTML Element into this type
 	 * @param {HTMLElement} element 
-	 * @returns {Display}
+	 * @returns {GameObject}
 	 */
 	static from(element)
 	{
@@ -14,11 +14,11 @@ export default class Display extends DOMElement
 			throw new Error('Param "element" must be of type HTMLElement')
 		}
 		
-		/** @type {Display} */
-		const display = Object.setPrototypeOf(element, this.prototype)
-		display.initialize()
+		/** @type {GameObject} */
+		const object = Object.setPrototypeOf(element, this.prototype)
+		object.initialize()
 
-		return display
+		return object
 	}
 
 	/**

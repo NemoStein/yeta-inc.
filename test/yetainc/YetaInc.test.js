@@ -8,16 +8,17 @@ describe('YetaInc', () =>
 	let YetaInc
 	const sandbox = sinon.createSandbox()
 
-	const Display = class Display
+	const GameObject = class GameObject
 	{
 		static from()
 		{
-			const display = Object.setPrototypeOf(new Display(), YetaInc.prototype)
-			display.initialize()
+			const object = Object.setPrototypeOf(new GameObject(), YetaInc.prototype)
+			object.initialize()
 
-			return display
+			return object
 		}
-
+		
+		initialize() {}
 		append() {}
 	}
 
@@ -38,7 +39,7 @@ describe('YetaInc', () =>
 	{
 		mockery.enable({ useCleanCache: true })
 		mockery.registerAllowable('../../src/js/yetainc/YetaInc.js')
-		mockery.registerMock('./Display.js', Display)
+		mockery.registerMock('./GameObject.js', GameObject)
 		mockery.registerMock('./components/Button.js', Buton)
 		mockery.registerMock('./Utils.js', Utils)
 
@@ -60,7 +61,7 @@ describe('YetaInc', () =>
 	{
 		it('should return a YetaInc', () =>
 		{
-			YetaInc.create().should.be.instanceof(Display)
+			YetaInc.create().should.be.instanceof(GameObject)
 			YetaInc.create().should.be.instanceof(YetaInc)
 		})
 	})
