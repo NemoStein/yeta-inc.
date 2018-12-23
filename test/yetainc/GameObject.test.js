@@ -33,31 +33,20 @@ describe('GameObject', () =>
 		mockery.disable()
 	})
 	
-	describe('GameObject.from()', () =>
+	describe('new GameObject()', () =>
 	{
 		it('should throw if "element" is not provided or is not a HTMLElement', () =>
 		{
-			should(() => GameObject.from()).throw()
-			should(() => GameObject.from(null)).throw()
-			should(() => GameObject.from(undefined)).throw()
-			should(() => GameObject.from(13)).throw()
-			should(() => GameObject.from(true)).throw()
-			should(() => GameObject.from('hello')).throw()
-			should(() => GameObject.from({})).throw()
-			should(() => GameObject.from(() => {})).throw()
+			should(() => new GameObject()).throw()
+			should(() => new GameObject(null)).throw()
+			should(() => new GameObject(undefined)).throw()
+			should(() => new GameObject(13)).throw()
+			should(() => new GameObject(true)).throw()
+			should(() => new GameObject('hello')).throw()
+			should(() => new GameObject({})).throw()
+			should(() => new GameObject(() => {})).throw()
 			
-			should(() => GameObject.from(fakeElement)).not.throw()
-		})
-		
-		it('should enriched an element and initialize it', () =>
-		{
-			const spy = sandbox.spy(fakeElement, 'initialize')
-			const object = GameObject.from(fakeElement)
-			
-			object.should.be.instanceOf(DOM.HTMLElement)
-			object.should.be.instanceOf(GameObject)
-			
-			spy.should.be.calledOnce()
+			should(() => new GameObject(fakeElement)).not.throw()
 		})
 	})
 })

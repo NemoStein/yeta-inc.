@@ -9,37 +9,36 @@ describe('Components.Button', () =>
 
 	const GameObject = class GameObject
 	{
-		addEventListener(type, listener)
+		constructor()
 		{
-			if (type === 'click' && !this.listener)
-			{
-				this.listener = listener
+			this.element = {
+
+				addEventListener(type, listener)
+				{
+					if (type === 'click' && !this.listener)
+					{
+						this.listener = listener
+					}
+				},
+
+				dispatchEvent(type)
+				{
+					if (type === 'click' && this.listener)
+					{
+						this.listener()
+					}
+				},
+
+				querySelector() { return {} },
+				
+				get classList()
+				{
+					return {
+						add: () => {},
+						remove: () => {},
+					}
+				}
 			}
-		}
-
-		dispatchEvent(type)
-		{
-			if (type === 'click' && this.listener)
-			{
-				this.listener()
-			}
-		}
-
-		querySelector() { return {} }
-		get classList()
-		{
-			return {
-				add: () => {},
-				remove: () => {},
-			}
-		}
-
-		static from()
-		{
-			const object = Object.setPrototypeOf(new GameObject(), Button.prototype)
-			object.initialize()
-
-			return object
 		}
 	}
 
@@ -73,36 +72,36 @@ describe('Components.Button', () =>
 
 	it('should react to click events', () =>
 	{
-		const button = Button.create(defaultLabel, defaultCallback)
+		const button = new Button(defaultLabel, defaultCallback)
 
-		button.dispatchEvent('click')
+		button.element.dispatchEvent('click')
 
 		defaultCallback.should.be.calledOnce()
 	})
 
 	it('should not react to click events if button is disabled', () =>
 	{
-		const button = Button.create(defaultLabel, defaultCallback)
-		
+		const button = new Button(defaultLabel, defaultCallback)
+
 		button.disable()
-		button.dispatchEvent('click')
-		
+		button.element.dispatchEvent('click')
+
 		defaultCallback.should.not.be.called()
 	})
 
-	describe('Button.create()', () =>
+	describe('new Button()', () =>
 	{
 		it('should return a Button', () =>
 		{
-			Button.create().should.be.instanceof(GameObject)
-			Button.create().should.be.instanceof(Button)
+			new Button().should.be.instanceof(GameObject)
+			new Button().should.be.instanceof(Button)
 		})
 
 		it('should accept no arguments, a label or a label and callback', () =>
 		{
-			const buttonA = Button.create()
-			const buttonB = Button.create(defaultLabel)
-			const buttonC = Button.create(defaultLabel, defaultCallback)
+			const buttonA = new Button()
+			const buttonB = new Button(defaultLabel)
+			const buttonC = new Button(defaultLabel, defaultCallback)
 
 			buttonA.label.should.be.String()
 			buttonA.label.should.be.empty()
@@ -120,13 +119,13 @@ describe('Components.Button', () =>
 	{
 		it('should enable the button', () =>
 		{
-			const button = Button.create()
+			const button = new Button()
 			button.enable().enabled.should.be.true()
 		})
 
 		it('should return the button itself', () =>
 		{
-			const button = Button.create()
+			const button = new Button()
 			button.enable().should.equals(button)
 		})
 	})
@@ -135,13 +134,13 @@ describe('Components.Button', () =>
 	{
 		it('should disable the button', () =>
 		{
-			const button = Button.create()
+			const button = new Button()
 			button.disable().enabled.should.be.false()
 		})
 
 		it('should return the button itself', () =>
 		{
-			const button = Button.create()
+			const button = new Button()
 			button.disable().should.equals(button)
 		})
 	})

@@ -11,34 +11,25 @@ export default class Button extends GameObject
 	/**
 	 * @param {String} label
 	 * @param {OnButtonClick} action
-	 * @returns {Button}
 	 */
-	static create(label = '', action = null)
+	constructor(label = '', action = null)
 	{
-		const button = /** @type {Button} */ (this.from(Utils.getTemplate('component.button')))
-
-		button.action = action
-		button.label = label
-
-		return button
-	}
-
-	initialize()
-	{
-		super.initialize()
+		super(Utils.getTemplate('component.button'))
 		
-		this.labelElement = this.querySelector('.label')
+		this.labelElement = this.element.querySelector('.label')
 		
 		this.enable()
-		this.addEventListener('click', () =>
+		this.element.addEventListener('click', () =>
 		{
 			if (this.enabled && this.onButtonClick)
 			{
 				this.onButtonClick(this)
 			}
 		})
+		
+		this.action = action
+		this.label = label
 	}
-
 	/**
 	 * @returns {OnButtonClick}
 	 */
@@ -66,7 +57,7 @@ export default class Button extends GameObject
 	enable()
 	{
 		this.enabled = true
-		this.classList.remove('disabled')
+		this.element.classList.remove('disabled')
 
 		return this
 	}
@@ -74,7 +65,7 @@ export default class Button extends GameObject
 	disable()
 	{
 		this.enabled = false
-		this.classList.add('disabled')
+		this.element.classList.add('disabled')
 
 		return this
 	}

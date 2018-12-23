@@ -1,6 +1,6 @@
-import Display from '../Display.js'
+import GameObject from '../GameObject'
 
-export default class Bar extends Display
+export default class Bar extends GameObject
 {
 	
 }

@@ -9,7 +9,7 @@ document.addEventListener('contextmenu', event =>
 
 document.addEventListener('DOMContentLoaded', () =>
 {
-	const game = YetaInc.create()
+	const game = new YetaInc()
 	game.start()
 	
 	const updateCallback = () =>

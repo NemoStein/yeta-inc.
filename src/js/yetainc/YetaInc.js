@@ -4,14 +4,9 @@ import Utils from './Utils.js';
 
 export default class YetaInc extends GameObject
 {
-	static create()
+	constructor()
 	{
-		return /** @type {YetaInc} */ (this.from(Utils.getElement('#App')))
-	}
-	
-	initialize()
-	{
-		super.initialize()
+		super(Utils.getElement('#App'))
 		
 		this.samples()
 	}
@@ -38,7 +33,7 @@ export default class YetaInc extends GameObject
 	
 	samples()
 	{
-		const button = Button.create('Hello world', button =>
+		const button = new Button('Hello world', button =>
 		{
 			button.label = 'Bye world'
 		})
@@ -46,7 +41,7 @@ export default class YetaInc extends GameObject
 		
 		this.attach(button)
 		
-		this.attach(Button.create('Hello world', button =>
+		this.attach(new Button('Hello world', button =>
 		{
 			button.label = 'Bye world'
 		}))

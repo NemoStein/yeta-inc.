@@ -57,12 +57,8 @@ describe('YetaInc', () =>
 		mockery.disable()
 	})
 
-	describe('YetaInc.create()', () =>
+	describe('new YetaInc', () =>
 	{
-		it('should return a YetaInc', () =>
-		{
-			YetaInc.create().should.be.instanceof(GameObject)
-			YetaInc.create().should.be.instanceof(YetaInc)
-		})
+		
 	})
 })
