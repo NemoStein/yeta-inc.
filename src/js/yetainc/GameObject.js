@@ -14,35 +14,45 @@ export default class GameObject
 		}
 
 		this.element = element
-		
+
 		/** @type {Set<GameObject>} */
 		this.objects = new Set()
 	}
 
 	/**
 	 * Adds a GameObject to this
-	 * @param {GameObject} object 
+	 * @param {GameObject[]} objects 
 	 */
-	attach(object)
+	attach(...objects)
 	{
-		if (!this.objects.has(object))
+		for (const object of objects)
 		{
-			this.objects.add(object)
-			this.element.append(object.element)
+			if (!this.objects.has(object))
+			{
+				this.objects.add(object)
+				this.element.append(object.element)
+			}
 		}
+
+		return this
 	}
 
 	/**
 	 * Removes a GameObject from this
-	 * @param {GameObject} object 
+	 * @param {GameObject[]} objects 
 	 */
-	detach(object)
+	detach(...objects)
 	{
-		if (this.objects.has(object))
+		for (const object of objects)
 		{
-			this.objects.delete(object)
-			this.element.removeChild(object.element)
+			if (this.objects.has(object))
+			{
+				this.objects.delete(object)
+				this.element.removeChild(object.element)
+			}
 		}
+
+		return this
 	}
 
 	/**
