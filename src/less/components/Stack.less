@@ -1,6 +1,21 @@
 &
 {
 	position: relative;
-	
 	display: flex;
+	height: 100%;
+	
+	&.horizontal
+	{
+		flex-direction: row;
+	}
+	
+	&.vertical
+	{
+		flex-direction: column;
+	}
+	
+	.expand
+	{
+		flex-grow: 1;
+	}
 }
