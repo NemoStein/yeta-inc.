@@ -44,7 +44,7 @@ export default class YetaInc extends GameObject
 		const facilitiesButton = new Button('Facilities', () => mapButton.enable()).disable()
 		const researchButton = new Button('Research', () => {}).disable()
 
-		upperMenu.hudLocation = Direction.UP
+		upperMenu.border = Direction.DOWN
 
 		ui.attach(upperMenu)
 		upperMenu.attach(mapButton, workersButton, facilitiesButton, researchButton)

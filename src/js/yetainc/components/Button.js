@@ -57,6 +57,7 @@ export default class Button extends GameObject
 	enable()
 	{
 		this.enabled = true
+		this.element.classList.add('enabled')
 		this.element.classList.remove('disabled')
 
 		return this
@@ -65,6 +66,7 @@ export default class Button extends GameObject
 	disable()
 	{
 		this.enabled = false
+		this.element.classList.remove('enabled')
 		this.element.classList.add('disabled')
 
 		return this
