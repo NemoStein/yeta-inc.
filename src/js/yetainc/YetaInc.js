@@ -36,20 +36,29 @@ export default class YetaInc extends GameObject
 
 	samples()
 	{
-		const ui = new Stack()
 		const upperMenu = new Toolbar()
-
-		const mapButton = new Button('Map', () => researchButton.enable()).disable()
-		const workersButton = new Button('Workers', () => facilitiesButton.enable())
-		const facilitiesButton = new Button('Facilities', () => mapButton.enable()).disable()
-		const researchButton = new Button('Research', () => {}).disable()
-
+		const mapButton = new Button('Map', () => {})
+		const workersButton = new Button('Workers', () => {})
+		const facilitiesButton = new Button('Facilities', () => {})
+		const researchButton = new Button('Research', () => {})
+		
 		upperMenu.border = Direction.DOWN
-
-		ui.attach(upperMenu)
 		upperMenu.attach(mapButton, workersButton, facilitiesButton, researchButton)
-
-
+		
+		const lowerMenu = new Toolbar()
+		const logsButton = new Button('Logs', () => {})
+		const statsButton = new Button('Stats', () => {})
+		
+		lowerMenu.border = Direction.UP
+		lowerMenu.attach(logsButton, statsButton)
+		
+		const view = GameObject.empty()
+		view.element.classList.add('expand')
+		
+		const ui = new Stack()
+		ui.vertical()
+		ui.attach(upperMenu, view, lowerMenu)
+		
 		this.attach(ui)
 	}
 }
