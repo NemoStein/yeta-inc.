@@ -60,4 +60,12 @@ export default class Utils
 		
 		return element
 	}
+	
+	/**
+	 * @returns {HTMLElement} An HTMLElement
+	 */
+	static createElement()
+	{
+		return document.createElement('div')
+	}
 }

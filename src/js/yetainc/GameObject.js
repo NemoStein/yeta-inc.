@@ -1,7 +1,19 @@
 import { HTMLElement as DOMElement } from '../DOM.js'
+import Utils from './Utils.js'
 
 export default class GameObject
 {
+	/**
+	 * @returns {GameObject} An empty GameObject
+	 */
+	static empty()
+	{
+		const element = Utils.createElement()
+		element.classList.add('component')
+		
+		return new GameObject(element)
+	}
+	
 	/**
 	 * Enrich a HTML Element into this type
 	 * @param {HTMLElement} element 
