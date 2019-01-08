@@ -9,9 +9,10 @@ export default class GameObject
 	static empty()
 	{
 		const element = Utils.createElement()
-		element.classList.add('component')
+		const object = new GameObject(element)
+		object.tags.add('component')
 		
-		return new GameObject(element)
+		return object 
 	}
 	
 	/**
@@ -76,5 +77,10 @@ export default class GameObject
 		{
 			object.update()
 		}
+	}
+	
+	get tags()
+	{
+		return this.element.classList
 	}
 }
