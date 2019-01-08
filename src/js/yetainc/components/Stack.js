@@ -12,13 +12,13 @@ export default class Stack extends GameObject
 	
 	horizontal()
 	{
-		this.element.classList.add('horizontal')
-		this.element.classList.remove('vertical')
+		this.tags.add('horizontal')
+		this.tags.remove('vertical')
 	}
 	
 	vertical()
 	{
-		this.element.classList.remove('horizontal')
-		this.element.classList.add('vertical')
+		this.tags.remove('horizontal')
+		this.tags.add('vertical')
 	}
 }
