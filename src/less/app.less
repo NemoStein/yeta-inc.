@@ -25,6 +25,12 @@ body
 {
 	.component
 	{
+		&:not(.render)
+		{
+			display: none;
+		}
+		
+		&.view { @import 'components/View'; }
 		&.stack { @import 'components/Stack'; }
 		&.toolbar { @import 'components/Toolbar'; }
 		&.bar { @import 'components/Bar'; }

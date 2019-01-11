@@ -3,6 +3,7 @@ import Toolbar from './components/Toolbar.js'
 import Button from './components/Button.js'
 import { Direction } from './Bitmask.js'
 import Stack from './components/Stack.js'
+import View from './View.js'
 
 export default class HUD extends Stack
 {
@@ -19,7 +20,7 @@ export default class HUD extends Stack
 
 		const upperMenu = new Toolbar()
 		const lowerMenu = new Toolbar()
-		const view = GameObject.empty()
+		const views = GameObject.empty()
 
 		upperMenu.border = Direction.DOWN
 		upperMenu.attach(this.mapButton, this.workersButton, this.facilitiesButton, this.researchButton)
@@ -27,9 +28,23 @@ export default class HUD extends Stack
 		lowerMenu.border = Direction.UP
 		lowerMenu.attach(this.logsButton, this.statsButton)
 
-		view.tags.add('expand')
-
+		views.tags.add('expand')
+		
 		this.vertical()
-		this.attach(upperMenu, view, lowerMenu)
+		this.attach(upperMenu, views, lowerMenu)
+	}
+	
+	/**
+	 * @param {View} view 
+	 */
+	changeView(view)
+	{
+		if (this.currentView)
+		{
+			this.currentView.render = false
+		}
+		
+		view.render = true
+		this.currentView = view
 	}
 }

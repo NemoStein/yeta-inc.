@@ -27,6 +27,7 @@ export default class GameObject
 		}
 
 		this.element = element
+		this.render = true
 
 		/** @type {Set<GameObject>} */
 		this.objects = new Set()
@@ -82,5 +83,10 @@ export default class GameObject
 	get tags()
 	{
 		return this.element.classList
+	}
+	
+	set render(value)
+	{
+		this.tags.toggle('render', value)
 	}
 }
