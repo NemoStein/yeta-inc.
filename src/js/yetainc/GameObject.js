@@ -85,6 +85,11 @@ export default class GameObject
 		return this.element.classList
 	}
 	
+	get render()
+	{
+		return this.tags.contains('render')
+	}
+	
 	set render(value)
 	{
 		this.tags.toggle('render', value)
